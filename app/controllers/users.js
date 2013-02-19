@@ -22,7 +22,7 @@ exports.login = function (req, res) {
   } else {  
     res.render('suppliers/login', {
         title: 'Login'
-      , msg: req.flash('error')
+      , error: req.flash('error')
     });
   }
 }
@@ -94,7 +94,9 @@ exports.create = function (req, res) {
   user.provider = 'local';
   user.save(function (err) {
     if (err) {
-      return res.render('suppliers/signup', { msg: "Please fill out all form elements", user: new User() });
+      console.log('got an eror:', err, err.code);
+      if(err.code == 11000) return res.render('suppliers/signup', { error: 'Email already exists', user: new User() });
+      else return res.render('suppliers/signup', { error: 'Check your passwords!', user: new User() });
     }
     req.logIn(user, function(err) {
       if (err) return next(err);

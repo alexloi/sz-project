@@ -8,7 +8,7 @@ block content
   
   .row(style="")
     .four.columns.offset-by-four
-     if (typeof msg !== 'undefined' && msg != '')
-            .alert-box.alert= msg
+     if (typeof error !== 'undefined' && error != '')
+            .alert-box.alert= error
               a(href="", class="close") &times;
       block auth
