@@ -1,0 +1,7 @@
+extends ../../layouts/base
+
+block content
+   if (typeof userEmail !== 'undefined' && userEmail != '')
+     h1 Hello to this wonderful dashboard 
+        =userEmail
+     a.button(href="/suppliers/logout") Logout 

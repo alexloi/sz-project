@@ -3,6 +3,7 @@ body{
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-attachment: fixed;
+	background-color: transparent;
 	color: white !important;
 
 	-webkit-background-size: cover !important;

@@ -3,15 +3,21 @@ var mongoose = require('mongoose')
 
 module.exports = function (app, passport, auth) {
  
- // User routes
+  // User routes
   var users = require('../app/controllers/users');
+  
   app.get('/', auth.supplierCheckAuth, users.login);
   app.get('/suppliers', auth.supplierCheckAuth, users.login);
-  app.get('/suppliers/signup', users.signup);
-  app.get('/suppliers/login', users.login);
+  app.get('/suppliers/signup', auth.supplierCheckAuth, users.signup);
+  app.get('/suppliers/login', auth.supplierCheckAuth, users.login);
+  app.get('/suppliers/logout', users.logout);
 
   app.post('/suppliers/session', passport.authenticate('local', {failureRedirect: '/suppliers/login', failureFlash: 'Invalid email or password.'}), users.session);
-  
+  app.post('/suppliers/create', users.create);
+
+  // Suppliers dashboard routes
+  var dashboard = require('../app/controllers/dashboard');
+  app.get('/suppliers/dashboard', auth.supplierRequiresLogin, dashboard.index);
   
   // // Demo routes
   // var demos = require('../app/controllers/demos');

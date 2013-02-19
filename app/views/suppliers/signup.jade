@@ -1,4 +1,26 @@
-extends ../layouts/base
+extends auth
 
-block content
-   h1 Suppliers signup
+block auth
+   form(method="post", action="/suppliers/create")
+        fieldset
+         h4 Suppliers signup
+         .row
+           .four.columns
+             label.left.inline Email
+           .eight.columns
+             input(type='text', name="email", placeholder='Email')
+         .row
+           .four.columns
+             label.left.inline Password
+           .eight.columns
+             input(type='password', name="password", placeholder='Password')
+         .row
+           .four.columns
+             label.left.inline Repeat
+           .eight.columns
+             input(type='password', name="password_ver", placeholder='Repeat password')
+         hr
+         .row
+           .five.columns.offset-by-three
+             input(type='hidden', name='_csrf', value=token)
+             button.button(type='submit') SIGN UP    

@@ -1,7 +1,8 @@
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
   , crypto = require('crypto')
-  , _ = require('underscore'); 
+  , _ = require('underscore')
+  , authTypes = ['']; 
 
 /*
  User schema:
@@ -12,10 +13,22 @@ var mongoose = require('mongoose')
 */
 var UserSchema = new Schema({
     name: String
-  , email: String
-  , hashed_password: String
+  , email: 
+      {
+          type: String, 
+          required: true, 
+          unique: true 
+      }
+  , hashed_password: 
+      {
+          type: String,
+          required: true
+      }
   , salt: String
-  , first: {type: Boolean, default: true}
+  , first: {
+      type: Boolean, 
+      default: true
+  }
 });
 
 // virtual attributes
