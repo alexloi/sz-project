@@ -1,0 +1,30 @@
+body{
+	background-image: url(/img/suppliers/suppliers-login-bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-attachment: fixed;
+	color: white !important;
+
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	-o-background-size: cover !important;
+	background-size: cover !important;
+}
+
+h1,h2,h3,h4,h5{
+	color: white !important;
+}
+
+label{
+	color: white !important;
+}
+
+.button{
+	background-color: #EB771C !important;
+	border: 1px solid white !important;
+}
+
+.button:hover{
+	background-color: #EF9525 !important;
+}
+

@@ -1,0 +1,21 @@
+extends auth
+
+block auth  
+     form(method="post", action="/suppliers/session")
+        fieldset
+         h4 Suppliers login
+         .row
+           .four.columns
+             label.left.inline Email
+           .eight.columns
+             input(type='text', name="email", placeholder='Email')
+         .row
+           .four.columns
+             label.left.inline Password
+           .eight.columns
+             input(type='password', name="password", placeholder='Password')
+         hr
+         .row
+           .four.columns.offset-by-four
+             input(type='hidden', name='_csrf', value=token)
+             button.button(type='submit') ENTER

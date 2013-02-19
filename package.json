@@ -1,12 +1,12 @@
 {
-    "name": "boilerplate"
-  , "description": "Fleshed out boilerplate nodejs / mongoose"
+    "name": "sz-project"
+  , "description": "A sample project for SZ"
   , "version": "1.0.0"
   , "private": false
   , "author": "Alexis Loizou, alex@roboboogie.us, Github: alexloi"
   , "engines": {
-        "node": "0.6.18"
-      , "npm": "1.1.9"
+        "node": "0.8.19"
+      , "npm": "1.2.10 "
     }
   , "scripts": {
       "start": "./node_modules/.bin/nodemon server.js"
@@ -21,5 +21,8 @@
     , "gzippo": "latest"
     , "async": "latest"
     , "nodemon": "latest"
+    , "passport": "latest"
+    , "passport-local": "latest"
+    , "randomstring": "latest"
   }
 }

@@ -1,32 +1,41 @@
 var mongoose = require('mongoose')
-  , Demo = mongoose.model('Demo')
   , async = require('async');
 
-module.exports = function (app) {
-  
-  // Demo routes
-  var demos = require('../app/controllers/demos');
-  
-  // Home route
-  app.get('/', demos.index);
+module.exports = function (app, passport, auth) {
+ 
+ // User routes
+  var users = require('../app/controllers/users');
+  app.get('/', auth.supplierCheckAuth, users.login);
+  app.get('/suppliers', auth.supplierCheckAuth, users.login);
+  app.get('/suppliers/signup', users.signup);
+  app.get('/suppliers/login', users.login);
 
-  app.get('/demos/new', demos.new);
-  app.post('/demos',  demos.create);
-  app.get('/demos/:id', demos.show);
-  app.get('/demos/:id/edit', demos.edit);
-  app.put('/demos/:id', demos.update);
-  app.del('/demos/:id',  demos.destroy);
+  app.post('/suppliers/session', passport.authenticate('local', {failureRedirect: '/suppliers/login', failureFlash: 'Invalid email or password.'}), users.session);
+  
+  
+  // // Demo routes
+  // var demos = require('../app/controllers/demos');
+  
+  // // Home route
+  // app.get('/', demos.index);
 
-  app.param('demoId', function (req, res, next, id) {
-    Demo
-      .findOne({ _id : id })
-      .exec(function (err, demo) {
-        if (err) return next(err);
-        if (!demo) return next(new Error('Failed to load Demo ' + id));
-        req.profile = demo;
-        next();
-      });
-  });
+  // app.get('/demos/new', demos.new);
+  // app.post('/demos',  demos.create);
+  // app.get('/demos/:id', demos.show);
+  // app.get('/demos/:id/edit', demos.edit);
+  // app.put('/demos/:id', demos.update);
+  // app.del('/demos/:id',  demos.destroy);
+
+  // app.param('demoId', function (req, res, next, id) {
+  //   Demo
+  //     .findOne({ _id : id })
+  //     .exec(function (err, demo) {
+  //       if (err) return next(err);
+  //       if (!demo) return next(new Error('Failed to load Demo ' + id));
+  //       req.profile = demo;
+  //       next();
+  //     });
+  // });
 
   // app.param('id', function(req, res, next, id){
   //   Article

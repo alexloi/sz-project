@@ -1,8 +1,61 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 20px 'Roboto Condensed', Helvetica, Arial, sans-serif !important;
 }
 
-a {
-  color: #00B7FF;
+dd{
+	cursor: pointer;
+}
+
+h1, h2, h3, h4, h5{
+	font-family: 'Roboto Condensed' !important;
+}
+
+#viewTab, #newTab, #tabs, #preloader{
+	display:none;
+}
+
+dl.horizontal dd:hover{
+	border-top: 3px solid #27BEDC !important;
+}
+dl.vertical dd:hover{
+	border-left: 3px solid #27BEDC !important;
+}
+
+a{
+	cursor: pointer !important;
+}
+
+.no-top-margin{
+	margin-top: 0px !important;
+}
+
+.bottom-margin{
+	margin-bottom: 10px;
+}
+
+.margin-right{
+	margin-right: 10px;	
+}
+
+.status{
+	display:none;
+}
+
+#profile_tmpl{
+	display: none;
+}
+
+.profile_section{
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+.profile-buttons{
+	padding: 5px !important;
+	text-align: center !important;
+}
+
+.profile-buttons button{
+	margin-bottom: 0px !important;
 }
