@@ -7,8 +7,10 @@ block content
   link(rel="stylesheet", href="/css/suppliers/auth.css")
   
   .row(style="")
-    .four.columns.offset-by-four
+    .four.columns.offset-by-four.margin-top
+     a(href="/") 
+       img(src="/img/brand/logo-s.png")
      if (typeof error !== 'undefined' && error != '')
-            .alert-box.alert= error
+            .alert-box.alert.margin-top= error
               a(href="", class="close") &times;
       block auth

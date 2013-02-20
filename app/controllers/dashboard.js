@@ -8,5 +8,6 @@ var mongoose = require('mongoose')
   , _ = require('underscore');
 
 exports.index = function(req,res){
-	res.render('suppliers/dashboard/index', { userEmail: req.user.email } );
+	res.render('suppliers/dashboard/index', { userEmail: req.user.email, first: req.user.first } );
+	return;	
 }
