@@ -9,7 +9,9 @@ module.exports = function (app, passport, auth) {
   app.get('/', auth.supplierCheckAuth, users.login);
   app.get('/suppliers', auth.supplierCheckAuth, users.login);
   app.get('/suppliers/signup', auth.supplierCheckAuth, users.signup);
+  app.get('/signup', auth.supplierCheckAuth, users.signup);
   app.get('/suppliers/login', auth.supplierCheckAuth, users.login);
+  app.get('/login', auth.supplierCheckAuth, users.login);
   app.get('/suppliers/logout', users.logout);
 
   app.post('/suppliers/session', passport.authenticate('local', {failureRedirect: '/suppliers/login', failureFlash: 'Invalid email or password.'}), users.session);
@@ -18,6 +20,10 @@ module.exports = function (app, passport, auth) {
   // Suppliers dashboard routes
   var dashboard = require('../app/controllers/dashboard');
   app.get('/suppliers/dashboard', auth.supplierRequiresLogin, dashboard.index);
+
+  // Store routes
+  var stores = require('../app/controllers/stores');
+  app.post('/suppliers/stores/new', auth.supplierRequiresLogin, stores.new);
   
   // // Demo routes
   // var demos = require('../app/controllers/demos');

@@ -2,6 +2,7 @@
  *  Generic require login routing middleware
  */
 exports.supplierRequiresLogin = function (req, res, next) {
+  console.log('requires login gmton!');
   if (!req.isAuthenticated()) {
     return res.redirect('/login');
   }

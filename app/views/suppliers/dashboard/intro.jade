@@ -1,0 +1,43 @@
+.row.dashboard-container
+  .six.columns.offset-by-three.bg-white
+    
+    if (typeof error !== 'undefined' && error != '')
+        .alert-box.alert.margin-top= error
+              a(href="", class="close") &times;
+
+    h3 Get your store set up!
+    p Fill out the following form to start adding products to your store
+    form(method="post", action="/suppliers/stores/new")
+         .row
+           .two.columns
+             label.left.inline Name:
+           .ten.columns
+             input(type='text', name="name", placeholder='Name of your store')
+         .row
+           .two.columns
+             label.left.inline Description:
+           .ten.columns
+             textarea(name="description", placeholder='A short description of your store')
+         .row
+           .two.columns
+             label.left.inline Address:
+           .ten.columns
+             input(type='text', name="address", placeholder='Your stores address')
+         .row
+           .two.columns
+             label.left.inline Postcode:
+           .ten.columns
+             input(type='text', name="postCode", placeholder='Postcode (example: WC1H9RW)')
+         .row
+           .two.columns
+             label.left.inline Tags:
+           .ten.columns
+             input(type='text', name="tags", placeholder='Lifestyle, homeware, wood')
+             p * Insert keywords that define your store. Use commas as shown in the example.
+
+         hr
+         .row
+           .four.columns.offset-by-four(style="text-align:center")
+             input(type='hidden', name='_csrf', value=token)
+             button.button(type='submit') SUBMIT
+

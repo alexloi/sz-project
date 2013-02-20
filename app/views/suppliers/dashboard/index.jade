@@ -1,7 +1,21 @@
 extends ../../layouts/base
 
 block content
-   if (typeof userEmail !== 'undefined' && userEmail != '')
-     h1 Hello to this wonderful dashboard 
-        =userEmail
-     a.button(href="/suppliers/logout") Logout 
+   link(rel="stylesheet", href="/css/suppliers/dashboard.css")
+   
+   include header
+   - if (typeof userFirst !== 'undefined' && userFirst)
+        include intro
+   
+   - else if (typeof store !== 'undefined' && !userFirst)
+        - if (typeof products !== 'undefined')
+            include store-details
+        - else 
+            include product-first
+
+   - else 
+        include error
+
+
+
+     

@@ -1,0 +1,50 @@
+.row.dashboard-container
+  .six.columns.offset-by-three.bg-white
+    
+    if (typeof error !== 'undefined' && error != '')
+        .alert-box.alert.margin-top= error
+              a(href="", class="close") &times;
+    h2=store.name
+      small(style="color: #C25544 !important")  
+        each tag in store.tags
+          =tag             
+
+    h3 Add your first product!
+    p Fill out the following form to add your first product
+    form(method="post", action="/suppliers/products/new")
+         .row
+           .two.columns
+             label.left.inline Name:
+           .ten.columns
+             input(type='text', name="name", placeholder='Product name')
+         .row
+           .two.columns
+             label.left.inline Description:
+           .ten.columns
+             textarea(name="description", placeholder='A short description of your product')
+         .row
+           .two.columns
+             label.left.inline Price:
+           .ten.columns
+             input(type='text', name="price", placeholder='The price')
+        .row
+           .two.columns
+             label.left.inline Quantity:
+           .ten.columns
+             input(type='text', name="quantity", placeholder='The quantity')
+         .row
+           .two.columns
+             label.left.inline Made from:
+           .ten.columns
+             input(type='text', name="made_from", placeholder='Made from who? (example: AgreatBrand)')
+         .row
+           .two.columns
+             label.left.inline Tags:
+           .ten.columns
+             input(type='text', name="tags", placeholder='Silver, top, shiny')
+             p * Insert keywords that define your product. Use commas as shown in the example.
+         .row
+           .four.columns.offset-by-four(style="text-align:center; margin-bottom: 15px")
+             input(type='hidden', name='_csrf', value=token)
+             button.button(type='submit') SUBMIT
+

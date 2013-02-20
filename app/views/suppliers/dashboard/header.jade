@@ -1,0 +1,18 @@
+.row.header
+  .three.columns(style="margin-top:5px; margin-bottom:5px")
+      a(href="/") 
+        img(src="/img/brand/logo-s.png")
+  .nine.columns
+      .row
+        .seven.columns.offset-by-five
+          ul.inline-list(style="float:right")
+           if (typeof userEmail !== 'undefined' && userEmail != '')
+            li User:
+              b 
+                =userEmail 
+            li Support: 
+              b
+               | UK +44 1223 3233
+            li Control:
+              b 
+                a(href="/suppliers/logout") Logout 

@@ -1,0 +1,8 @@
+.row
+  .twelve.columns
+    ul.inline-list
+      li
+        h4(style="color:white")=store.name
+            small   
+                each tag in store.tags
+                    =tag

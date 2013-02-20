@@ -1,0 +1,69 @@
+/*
+	Color palette:
+	red: #C25544;
+	light red: #DFA89F;
+	pastel yellow: #FCE7BF;
+*/
+
+body{
+	background-color: #C25544;
+}
+
+h1,h2,h3,h4,h5{
+
+}
+
+small{
+	color: #DFA89F !important;
+}
+.dashboard-container{
+	color: black !important;
+	margin-top: 20px;
+}
+
+.dashboard-container h1, h2 {
+	color: #C25544;
+}
+
+.dashboard-container h3, h4, h5 {
+	color: #DFA89F;
+}
+
+.bg-white{
+	background-color: white;
+}
+
+.header{
+	margin-top: 10px;
+	color: white;
+	border-bottom: solid 1px #ddd;
+}
+
+a, a:active, a:visited{
+	color: #FCE7BF;
+}
+
+label{
+	font-weight: bold;
+}
+
+.row{
+	width: 100% !important;
+}
+
+ul {
+	list-style: none;
+}
+
+.button{
+	background-color: #DFA89F !important;
+	border: 1px solid white !important;
+}
+
+.button:hover{
+	background-color: #D27D72 !important;
+}
+
+.margin-top{
+	margin-top: 30px;
+}
