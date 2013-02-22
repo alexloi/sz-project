@@ -1,4 +1,4 @@
-extends ../layouts/base
+extends ../layouts/base-customer
 
 block content
     link(rel="stylesheet", href="/css/customers/main.css")
@@ -9,7 +9,7 @@ block content
 
     - else if (typeof products !== 'undefined')
         include map
-        
+
     - else 
         h1 Kati epien polla x
 

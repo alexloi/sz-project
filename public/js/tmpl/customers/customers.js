@@ -1,7 +1,7 @@
 $(document).ready(function(){
    loadMap();
    loadProducts();  
-
+   loadUIBinds();
 });
 
 function loadMap(){
@@ -39,4 +39,22 @@ function loadProducts(){
            }
         }); 
     });
+}
+
+function loadUIBinds(){
+      $("#scrollDown").bind("click", function(e){
+        e.preventDefault();
+        console.log('gamose');
+        var topVal = $("#product-list").offset().top;
+        console.log(topVal);
+         $("#product-list").css("top", topVal-10);
+      });
+
+      $("#scrollUp").bind("click", function(e){
+        e.preventDefault();
+        console.log('gamose 2');
+        var topVal = $("#product-list").offset().top;
+        console.log(topVal);
+         $("#product-list").css("top", topVal+10);
+      });       
 }

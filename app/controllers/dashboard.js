@@ -7,7 +7,6 @@ var mongoose = require('mongoose')
   , Product = mongoose.model('Product')
   , url = require('url')
   , randomString = require('randomstring')
-
   , _ = require('underscore');
 
 exports.index = function(req,res){

@@ -16,7 +16,10 @@ html, body, #map{
     z-index: 100000;
 }
 
-
+.product-scroll{
+    overflow: hidden;
+    height: 400px !important;
+}
 
 .bg-trans{
     background-color: white;
