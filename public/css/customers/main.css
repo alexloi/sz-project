@@ -1,0 +1,38 @@
+body{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+html, body, #map{
+    height: 100% !important;
+}
+
+.map-container{
+    width: 100% !important;
+}
+
+.product-container{
+    position: absolute;
+    z-index: 100000;
+}
+
+
+
+.bg-trans{
+    background-color: white;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.8);
+    progid:DXImageTransform.Microsoft.gradient(startColorstr=#9A33AAEE,endColorstr=#9A33AAEE); 
+    
+    -webkit-box-shadow: inset 0px 0px 4px 0px #ffffff;
+    box-shadow: inset 0px 0px 4px 0px #ffffff;
+}
+
+h4,h5{
+    color:#C6533B;
+}
+
+.product-single:hover{
+    cursor: pointer;
+    border-left: 2px solid #C6533B;
+}

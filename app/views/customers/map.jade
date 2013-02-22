@@ -1,0 +1,8 @@
+#map.row.map-container(style="height: 100% !important;")
+    include products
+
+script(type="text/javascript")
+    var products = !{JSON.stringify(products)};
+    var csrf = '!{token}';
+    console.log('products:', products, csrf);
+

@@ -1,0 +1,12 @@
+.row.product-single(style="margin-bottom: 5px", tag=index)
+    .two.columns
+        - if (product.images[0] && product.images[0].files && product.images[0].files.length)
+            img(src=product.images[0].cdnUri + '/mini_' + product.images[0].files[0], style="height: 69px; width: 61px")
+    .nine.columns
+        p 
+          span(style="width:100%")
+            b=product.name 
+            br
+          span(style="width: 100%")
+            b £
+            =product.price

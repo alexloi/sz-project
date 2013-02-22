@@ -5,8 +5,6 @@ module.exports = function (app, passport, auth) {
  
   // User routes
   var users = require('../app/controllers/users');
-  
-  app.get('/', auth.supplierCheckAuth, users.login);
   app.get('/suppliers', auth.supplierCheckAuth, users.login);
   app.get('/suppliers/signup', auth.supplierCheckAuth, users.signup);
   app.get('/signup', auth.supplierCheckAuth, users.signup);
@@ -28,6 +26,11 @@ module.exports = function (app, passport, auth) {
   app.post('/suppliers/products/edit', auth.supplierRequiresLogin, stores.editProduct);
   app.post('/suppliers/products/delete', auth.supplierRequiresLogin, stores.deleteProduct);
   
+  // Customer routes
+  var customers = require('../app/controllers/customers');
+  app.get('/', customers.index);
+  app.post('/customers/templates/product_single', customers.singleProductTmpl);
+
   // Templates routes
   var templates = require('../app/controllers/templates');
   app.post('/suppliers/templates/product-preview-tmpl', auth.supplierRequiresLogin, templates.productSingle);
