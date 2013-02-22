@@ -157,8 +157,9 @@ exports.editProduct = function(req,res){
       });
     }
   });
+}
 
-  exports.deleteProduct = function(req,res){ 
+exports.deleteProduct = function(req,res){ 
   console.log("DELETE PRODUCT:", req.body);
   console.log("DELETE PRODUCT ID:", req.body.productId);
 
@@ -174,6 +175,6 @@ exports.editProduct = function(req,res){
         return;
       });
       delete req.body.productId;
+    }
   });
 }
-
