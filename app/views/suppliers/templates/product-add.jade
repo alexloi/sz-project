@@ -1,0 +1,56 @@
+.row
+  .twelve.columns.product-details-container.bg-white
+    h4 Add a new product
+    form(method="post", action="/suppliers/products/new", enctype="multipart/form-data")
+             .row
+               .two.columns
+                 label.left.inline Name:
+               .ten.columns
+                 input(type='text', class='required', name="name", placeholder='Product name')
+             .row
+               .two.columns
+                 label.left.inline Description:
+               .ten.columns
+                 textarea(name="description", placeholder='A short description of your product')
+             .row
+               .two.columns
+                 label.left.inline Product specifics: 
+               .ten.columns
+                 textarea(name="specifics", placeholder='Specific details of the product')
+             .row
+               .two.columns
+                 label.left.inline Price:
+               .ten.columns
+                 input(type='text', name="price", placeholder='The price')
+             .row
+               .two.columns
+                 label.left.inline Brand:
+               .ten.columns
+                 input(type='text', name="made_from", placeholder='Made from who? (example: AgreatBrand)')
+             .row
+               .two.columns
+                 label.left.inline Image:
+               .ten.columns
+                 input(type='file', name="image[]")
+                 p * Upload an image
+             .row
+               .two.columns
+                 label.left.inline Tags:
+               .ten.columns
+                 input(type='text', name="tags", placeholder='Silver, top, shiny')
+                 p * Insert keywords that define your product. Use commas as shown in the example.
+             .row
+               .four.columns.offset-by-four(style="text-align:center; margin-bottom: 15px")
+                 input(type='hidden', name='_csrf', value=token)
+                 button.button(type='submit', disabled) SUBMIT
+
+script(type='text/javascript')
+  $(document).ready(function(){
+    $('.required').on('keyup', function(e){
+      var self = $(this);
+      if(self.val() !== "" || self.val() !== " "){
+        $('.button').removeAttr('disabled');
+      }
+    });
+  });
+

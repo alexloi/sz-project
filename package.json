@@ -23,6 +23,6 @@
     , "nodemon": "latest"
     , "passport": "latest"
     , "passport-local": "latest"
-    , "randomstring": "latest"
+    , "imager": "latest"
   }
 }

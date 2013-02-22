@@ -8,6 +8,7 @@
           ul.inline-list(style="float:right")
            if (typeof userEmail !== 'undefined' && userEmail != '')
             li User:
+              |   
               b 
                 =userEmail 
             li Support: 
@@ -16,3 +17,4 @@
             li Control:
               b 
                 a(href="/suppliers/logout") Logout 
+

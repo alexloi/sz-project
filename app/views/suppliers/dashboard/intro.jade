@@ -1,5 +1,5 @@
 .row.dashboard-container
-  .six.columns.offset-by-three.bg-white
+  .eight.columns.offset-by-two.bg-white
     
     if (typeof error !== 'undefined' && error != '')
         .alert-box.alert.margin-top= error
@@ -7,7 +7,7 @@
 
     h3 Get your store set up!
     p Fill out the following form to start adding products to your store
-    form(method="post", action="/suppliers/stores/new")
+    form(method="post", action="/suppliers/stores/new", enctype="multipart/form-data")
          .row
            .two.columns
              label.left.inline Name:
@@ -28,6 +28,12 @@
              label.left.inline Postcode:
            .ten.columns
              input(type='text', name="postCode", placeholder='Postcode (example: WC1H9RW)')
+         .row
+           .two.columns
+             label.left.inline Image:
+           .ten.columns
+             input(type='file', name="image[]")
+             p * Upload an image
          .row
            .two.columns
              label.left.inline Tags:

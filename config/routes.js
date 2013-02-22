@@ -24,7 +24,16 @@ module.exports = function (app, passport, auth) {
   // Store routes
   var stores = require('../app/controllers/stores');
   app.post('/suppliers/stores/new', auth.supplierRequiresLogin, stores.new);
+  app.post('/suppliers/products/new', auth.supplierRequiresLogin, stores.newProduct);
+  app.post('/suppliers/products/edit', auth.supplierRequiresLogin, stores.editProduct);
+  app.post('/suppliers/products/delete', auth.supplierRequiresLogin, stores.deleteProduct);
   
+  // Templates routes
+  var templates = require('../app/controllers/templates');
+  app.post('/suppliers/templates/product-preview-tmpl', auth.supplierRequiresLogin, templates.productSingle);
+  app.post('/suppliers/templates/product-edit-tmpl', auth.supplierRequiresLogin, templates.productEdit);
+  app.get('/suppliers/templates/product-add-tmpl', auth.supplierRequiresLogin, templates.productAdd);
+
   // // Demo routes
   // var demos = require('../app/controllers/demos');
   

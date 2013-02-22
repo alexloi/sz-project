@@ -6,16 +6,21 @@ block content
    include header
    - if (typeof userFirst !== 'undefined' && userFirst)
         include intro
-   
    - else if (typeof store !== 'undefined' && !userFirst)
         - if (typeof products !== 'undefined')
             include store-details
+            include product-tmpl
         - else 
-            include product-first
+            .row.dashboard-container
+              .twelve.columns
+                include product-first
+   //      - if (typeof products !== 'undefined')
+   //          include store-details
+   //      - else 
+   //          include product-first
+   // - else 
+   //      include error
 
-   - else 
-        include error
 
 
-
-     
+   //   

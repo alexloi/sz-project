@@ -2,6 +2,9 @@
   .twelve.columns
     ul.inline-list
       li
+        - if (store.images[0] && store.images[0].files && store.images[0].files.length)
+                
+      li
         h4(style="color:white")=store.name
             small   
                 each tag in store.tags

@@ -16,7 +16,7 @@ var StoreSchema = new Schema({
   , user: {type : Schema.ObjectId, ref : 'User'}
   , products: [{type : Schema.ObjectId, ref : 'Product'}]
   , tags: {type: [], get: getTags, set: setTags}
-  , images: [ {cdnUri: String, files: [] }]
+  , images: [{cdnUri: String, files: [] }]
   , address: {type: String}
   , city: {type: String}
   , postCode: {type: String}

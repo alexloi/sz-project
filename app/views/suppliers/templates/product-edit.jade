@@ -1,0 +1,58 @@
+.row
+  .twelve.columns.product-details-container.bg-white
+    .row 
+      .eight.columns
+        h4 Product details    
+    form(method="post", action="/suppliers/products/edit")
+             .row
+               .two.columns
+                 label.left.inline Name:
+               .ten.columns
+                 input(type='text', class='required', name="name", placeholder='Product name', value=product.name)
+             .row
+               .two.columns
+                 label.left.inline Description:
+               .ten.columns
+                 textarea(name="description", placeholder='A short description of your product')
+                    =product.description
+             .row
+               .two.columns
+                 label.left.inline Product specifics: 
+               .ten.columns
+                 textarea(name="specifics", placeholder='Specific details of the product')
+                    =product.specifics
+             .row
+               .two.columns
+                 label.left.inline Price:
+               .ten.columns
+                 input(type='text', name="price", placeholder='The price', value=product.price)
+             .row
+               .two.columns
+                 label.left.inline Brand:
+               .ten.columns
+                 input(type='text', name="made_from", placeholder='Made from who? (example: AgreatBrand)', value=product.made_from)
+             .row
+               .two.columns
+                 label.left.inline Tags:
+               .ten.columns
+                 input(type='text', name="tags", placeholder='Silver, top, shiny', value=product.tags)
+                 p * Insert keywords that define your product. Use commas as shown in the example.
+             .row
+               .four.columns.offset-by-four(style="text-align:center; margin-bottom: 15px")
+                 input(type='hidden', id="productId", name='productId', value=product._id)
+                 input(type='hidden', id="csrf", name='_csrf', value=token)
+                 button.button(type='submit', disabled) SAVE
+
+script(type='text/javascript')
+  $(document).ready(function(){
+    if($('.required').val() !== "" ||$('.required').val() !== " ") $('.button').removeAttr('disabled');
+
+    $('.required').on('keyup', function(e){
+      var self = $(this);
+      if(self.val() !== "" || self.val() !== " "){
+        $('.button').removeAttr('disabled');
+      }
+    });
+
+  });
+

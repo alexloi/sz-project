@@ -1,0 +1,20 @@
+.row
+    .four.columns
+        .product-overview-container.bg-white
+            #left-bar-header
+                h4 Product overview
+            #product-list
+            // All the products are listed here
+            .row
+                .twelve.columns(style='text-align: center; margin-top: 10px; ')
+                    a.button#add-product(href="#") Add product
+    .eight.columns
+        #product-overview
+
+input(id="csrf", type='hidden', name='_csrf', value=token)
+script(type="text/javascript")
+    var products = !{JSON.stringify(products)};
+    var selected = '!{selected}';
+
+script(type="text/javascript", src="/js/tmpl/suppliers/products.js")
+    

@@ -16,9 +16,10 @@ var ProductSchema = new Schema({
   , user: {type: Schema.ObjectId, ref : 'User'}
   , store: {type: Schema.ObjectId, ref: 'Store'}
   , tags: {type: [], get: getTags, set: setTags}
-  , images: [ {cdnUri: String, files: [] }]
+  , images: [ {cdnUri: String, files: [] } ]
   , price: {type: Number, default: 0}
   , description: {type: String}
+  , specifics: {type: String}
   , made_from: {type: String}
   , quantity: {type: Number, default: 0}
   , status: {type: String, default: 'active'}
@@ -27,9 +28,10 @@ var ProductSchema = new Schema({
 });
 
 /* VALIDATION FUNCTIONS */
+/*
 ProductSchema.path('name').validate(function (name) {
   return name.length > 0;
 }, 'Product name cannot be blank');
-
+*/
 /* MODEL DEFINITION */
 mongoose.model('Product', ProductSchema);
