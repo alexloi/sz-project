@@ -1,8 +1,12 @@
 #map.row.map-container(style="height: 100% !important;")
-    include products
+
+include products
+#final-rightbar
 
 script(type="text/javascript")
     var products = !{JSON.stringify(products)};
+    var stores = !{JSON.stringify(stores)};
     var csrf = '!{token}';
-    console.log('products:', products, csrf);
+
+    console.log('products:', products, stores, csrf);
 

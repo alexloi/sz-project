@@ -31,6 +31,36 @@ html, body, #map{
     box-shadow: inset 0px 0px 4px 0px #ffffff;
 }
 
+.small-map{
+    width: 300px !important;
+    float: left;
+}
+
+.xtra-small-map{
+    width: 200px !important;
+    float: left;
+}
+
+.rightbar{
+    height: 100%; 
+    float: left; 
+    width: 300px; 
+    display: none; 
+    padding: 10px;
+}
+
+.small-rightbar{
+    width: 150px !important;
+}
+
+.final-rightbar{
+    width: 200px !important;
+    padding: 10px;
+    float:left;
+    display: none;
+    height: 100%;
+}
+
 h4,h5{
     color:#C6533B;
 }

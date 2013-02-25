@@ -1,7 +1,17 @@
 $(document).ready(function(){
    loadMap();
-   loadProducts();  
-   loadUIBinds();
+   //loadStoreLatLong();
+   $(document).on('click','.product-single', function(e){
+      loadProductDetail(0);
+   });
+
+   $(document).on('click','.back', function(e){
+      var store = $(this).attr('tag');
+      $('#final-rightbar').hide();
+      $('.rightbar').show();
+   });
+
+   
 });
 
 function loadMap(){
@@ -10,8 +20,8 @@ function loadMap(){
         maxZoom: 18
     }).addTo(map);
 
-    map.locate({setView: true, maxZoom: 16});
-
+    map.locate();
+    
     // Binding
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
@@ -19,42 +29,84 @@ function loadMap(){
     // Callback functions
     function onLocationFound(e) {
         var radius = e.accuracy / 2;
+        console.log(e.latlng);
         L.marker(e.latlng).addTo(map).bindPopup("You are here!").openPopup();
     }
 
     function onLocationError(e) {
         alert(e.message);
     }
+
+    loadStoreLatLong(L, map);
 }
 
+function loadProducts(storeId){
+    $('#product-list').html('');
 
-function loadProducts(){
     $(products).each(function(index, product){
-        $.ajax({
-           url: '/customers/templates/product_single',
-           type: 'post',
-           data: { product: product, index: index, _csrf: csrf },
-           success: function(data) {
-               $('#product-list').append(data);
-           }
-        }); 
+        if(product.store == storeId){
+            $.ajax({
+               url: '/customers/templates/product_single',
+               type: 'post',
+               data: { product: product, index: index, _csrf: csrf },
+               success: function(data) {
+                   $('#product-list').append(data);
+               }
+            }); 
+        }
     });
 }
 
-function loadUIBinds(){
-      $("#scrollDown").bind("click", function(e){
-        e.preventDefault();
-        console.log('gamose');
-        var topVal = $("#product-list").offset().top;
-        console.log(topVal);
-         $("#product-list").css("top", topVal-10);
-      });
+function loadStoreLatLong(L, map){
+    var StoreIcon = L.Icon.extend({
+        options: {
+            iconSize: [40,50],
+            iconAnchor: [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor: [-3, -76]
+        }
+    });
 
-      $("#scrollUp").bind("click", function(e){
-        e.preventDefault();
-        console.log('gamose 2');
-        var topVal = $("#product-list").offset().top;
-        console.log(topVal);
-         $("#product-list").css("top", topVal+10);
-      });       
+    $(stores).each(function(index, store){
+        if(store.postCode){
+            var icon = new StoreIcon({iconUrl: '/img/brand/icon.png'})
+            $.ajax({
+                url: '/customers/templates/store_coords',
+                type: 'post',
+                data: {postcode: "WC1H 9RW", _csrf: csrf},
+                success: function(data){
+                    console.log(data, data.lat, data.lng);
+                    //var latlng = new L.LatLng(data.lat, data.lng);
+                    L.marker([data.lat, data.lng], {icon:icon}).bindPopup('<a id="bla" href="#" onclick="loadStoreProducts(\''+store._id+'\')">'+ store.name +':<br/>'+ store.products.length+' products!</a>').addTo(map);
+                    return;
+                }
+            });
+        }else{
+            console.log('Store has no postcode');
+            return;
+        }
+    });
+}
+
+function loadStoreProducts(storeId){
+    $('#map').addClass('small-map');
+    $('#rightbar').show();
+    loadProducts(storeId);
+}
+
+function loadProductDetail(index){
+    var product = products[index];
+    $('#rightbar').hide();
+    $.ajax({
+        url: '/customers/templates/product_detail',
+        type: 'post',
+        data: {product: product, _csrf: csrf },
+        success: function(html){
+            $('#final-rightbar').html(html);
+        }
+    });
+    
+    $('#final-rightbar').show();
+    $('.back').attr('tag', product.store);
+    console.log(product);
 }

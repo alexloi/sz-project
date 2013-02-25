@@ -30,6 +30,8 @@ module.exports = function (app, passport, auth) {
   var customers = require('../app/controllers/customers');
   app.get('/', customers.index);
   app.post('/customers/templates/product_single', customers.singleProductTmpl);
+  app.post('/customers/templates/store_coords', customers.storeCoords);
+  app.post('/customers/templates/product_detail', customers.singleProductDetail);
 
   // Templates routes
   var templates = require('../app/controllers/templates');
